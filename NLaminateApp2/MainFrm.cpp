@@ -1214,7 +1214,7 @@ void CMainFrame::WriteStringToFile()
 	strT.Format(_T("%20s %04d%02d%02d %02d%02d%02d "),
 					strLotID, m_sysNewTime.wYear, m_sysNewTime.wMonth, m_sysNewTime.wDay,
 					m_sysNewTime.wHour, m_sysNewTime.wMinute, m_sysNewTime.wSecond);
-	str.Format(_T("%1d %1d %9d"), 1, (long)(pResData[CAM_UP]->m_bRDataDec), m_Etc.m_nTotalInspCount-1);
+	str.Format(_T("%1d %1d %9d"), 1, (long)(pResData[CAM_UP]->m_bRDataDec || pResData[CAM_DN]->m_bRDataDec), m_Etc.m_nTotalInspCount-1);
 	strT += str;
 
 	for(i=0; i<CAM_MAX_NUM; i++)
@@ -1286,7 +1286,7 @@ void CMainFrame::WriteStringToFile()
 	strT.Format(_T("%20s %04d%02d%02d %02d%02d%02d "),
 					strLotID, m_sysNewTime.wYear, m_sysNewTime.wMonth, m_sysNewTime.wDay,
 					m_sysNewTime.wHour, m_sysNewTime.wMinute, m_sysNewTime.wSecond);
-	str.Format(_T("%1d %1d %9d"), 0, (long)(pResData[CAM_UP]->m_bFDataDec), m_Etc.m_nTotalInspCount);
+	str.Format(_T("%1d %1d %9d"), 0, (long)(pResData[CAM_UP]->m_bFDataDec || pResData[CAM_DN]->m_bFDataDec), m_Etc.m_nTotalInspCount);
 	strT += str;
 
 	for(i=0; i<CAM_MAX_NUM; i++)
@@ -1489,7 +1489,7 @@ void CMainFrame::WriteStringToFile_Csv_Day()
 	strT.Format(_T("%20s, %04d%02d%02d %02d%02d%02d, "),
 					strLotID, m_sysNewTime.wYear, m_sysNewTime.wMonth, m_sysNewTime.wDay,
 					m_sysNewTime.wHour, m_sysNewTime.wMinute, m_sysNewTime.wSecond);
-	str.Format(_T("%1d, %1d, %9d, "), 1, (long)(pResData[CAM_UP]->m_bRDataDec), m_Etc.m_nTotalInspCount-1);
+	str.Format(_T("%1d, %1d, %9d, "), 1, (long)(pResData[CAM_UP]->m_bRDataDec || pResData[CAM_DN]->m_bRDataDec), m_Etc.m_nTotalInspCount-1);
 	strT += str;
 
 	for(i=0; i<CAM_MAX_NUM; i++)
@@ -1561,7 +1561,7 @@ void CMainFrame::WriteStringToFile_Csv_Day()
 	strT.Format(_T("%20s, %04d%02d%02d %02d%02d%02d, "),
 					strLotID, m_sysNewTime.wYear, m_sysNewTime.wMonth, m_sysNewTime.wDay,
 					m_sysNewTime.wHour, m_sysNewTime.wMinute, m_sysNewTime.wSecond);
-	str.Format(_T("%1d, %1d, %9d, "), 0, (long)(pResData[CAM_UP]->m_bFDataDec), m_Etc.m_nTotalInspCount);
+	str.Format(_T("%1d, %1d, %9d, "), 0, (long)(pResData[CAM_UP]->m_bFDataDec || pResData[CAM_DN]->m_bFDataDec), m_Etc.m_nTotalInspCount);
 	strT += str;
 
 	for(i=0; i<CAM_MAX_NUM; i++)

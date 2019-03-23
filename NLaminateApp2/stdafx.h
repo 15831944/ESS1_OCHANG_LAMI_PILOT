@@ -82,7 +82,6 @@ static BOOL CreateDirectoryFullPath(CString strPath)
 static void RemoveDir(CString strDir)
 {
 	::RemoveDirectory(strDir);
-
 #if 0
 	CFileFind finder;
 	BOOL bWorking = TRUE;

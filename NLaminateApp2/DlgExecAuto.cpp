@@ -1099,13 +1099,10 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 		NAppDll_ExecuteInspection(nCAM);
 		m_pMainFrm->m_pRes[nCAM] = (INSP_RESULT_DATA *)NAppDll_GetResultData(nCAM);
 
-		//sprintf_s(szbuf, " Insp End(CAM=%d)", nCAM+1);
-		//m_pMainFrm->WriteLogToFile(szbuf);
-
 		dTime = m_pMainFrm->m_ctrlTimer.GetClockTimer(0);
 
 		if (nCAM==CAM_UP) sprintf_s(g_LOG.m_sLogTitle3, "INSP(CAM=%d T=%5.3f)", 1, dTime);
-		//if (nCAM==CAM_DN) sprintf_s(g_LOG.m_sLogTitle4, "INSP(CAM=%d T=%5.3f)", 2, dTime);
+		if (nCAM==CAM_DN) sprintf_s(g_LOG.m_sLogTitle4, "INSP(CAM=%d T=%5.3f)", 2, dTime);
 		//  상/하부 개별 검사 실행
 
 
@@ -1119,7 +1116,7 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 			m_pMainFrm->SetCheckLED(CAM_UP, TRUE);
 		}
 
-#if 0
+
 		if (bExecCAM[CAM_DN] && nCAM==CAM_DN)
 		{
 			bRet = m_pMainFrm->CopyRealTimeImage(CAM_DN, pImage);
@@ -1129,11 +1126,11 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 			m_pMainFrm->SetCheckLED(CAM_UP, FALSE);
 			m_pMainFrm->SetCheckLED(CAM_DN, TRUE);
 		}  
-#endif // 0
+
 
 		//  불량 영상 저장 및 저장 THREAD실행 
 
-#if 0
+
 		nSelExec = 0;
 		if (bExecCAM[CAM_UP] && !bExecCAM[CAM_DN])
 			nSelExec = 1;
@@ -1142,20 +1139,11 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 		else if (bExecCAM[CAM_UP] && bExecCAM[CAM_DN])
 			nSelExec = 3;
 
-
 		bExec = FALSE; 
-
-		if (nSelExec==1 && nCAM==CAM_UP)
+		if (m_pMainFrm->m_GrabCAM[CAM_UP] && m_pMainFrm->m_GrabCAM[CAM_DN] && nCAM==CAM_DN)
 			bExec = TRUE;
-		else
-		{
-			if (m_pMainFrm->m_GrabCAM[CAM_UP] && m_pMainFrm->m_GrabCAM[CAM_DN] && nCAM==CAM_DN)
-				bExec = TRUE;
-		}  
-#endif // 0
 
-		bExec = TRUE;
-		//if (!bExec)
+		//bExec = TRUE;
 		if (bExec)
 		{
 			m_pMainFrm->m_ctrlTimer.SetClockTimer(0);
@@ -1166,18 +1154,12 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 			bRTab = FALSE;
 
 			//  상부불량 카운트 수량 계산 및 상부 전체 검사항목 불량 결과 판정
-//			if (nSelExec==1 || nSelExec==3)
-//			{
+			if (nSelExec==1 || nSelExec==3)
+			{
 				if (m_pMainFrm->m_pRes[CAM_UP]->m_bFDecision) 
 				{
 					m_pMainFrm->m_Etc.m_nUpBadCount++;
-					bFDec = TRUE;
-					//for(int n=0; n<GOM_MAX_NUM; n++) 
-					//{
-					//	if((m_pMainFrm->m_pRes[CAM_UP]->m_nOutNo[n] == 2) && (m_pMainFrm->m_pRes[CAM_UP]->m_bDecisionROI[n]) && (!m_pMainFrm->m_pRes[CAM_UP]->m_bLocROI[n]) )
-					//		bFTab = TRUE;
-					//}
-					
+					bFDec = TRUE;				
 				}
 
 #if _DUO_CELL
@@ -1185,18 +1167,13 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 				{
 					m_pMainFrm->m_Etc.m_nUpBadCount++;
 					bRDec = TRUE;
-					//for(int n=0; n<GOM_MAX_NUM; n++) 
-					//{
-					//	if((m_pMainFrm->m_pRes[CAM_UP]->m_nOutNo[n] == 2) && (m_pMainFrm->m_pRes[CAM_UP]->m_bDecisionROI[n]) && (m_pMainFrm->m_pRes[CAM_UP]->m_bLocROI[n]) )
-					//		bRTab = TRUE;
-					//}
 				}
 #endif
-//			}
+			}
 			//  상부불량 카운트 수량 계산 및 상부 전체 검사항목 불량 결과 판정
 			
 			//  하부불량 카운트 수량 계산 및 하부 전체 검사항목 불량 결과 판정
-#if 0
+
 			if (nSelExec==2 || nSelExec==3)
 			{
 				if (m_pMainFrm->m_pRes[CAM_DN]->m_bFDecision)
@@ -1213,7 +1190,6 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 				}
 #endif
 			}  
-#endif // 0
 
 			//  하부불량 카운트 수량 계산 및 하부 전체 검사항목 불량 결과 판정
 
@@ -1322,7 +1298,7 @@ BOOL CDlgExecAuto::InspectProgressGrab(long lParam)
 
 			//  GRAB FLAG UPDATE      
 			m_pMainFrm->m_GrabCAM[CAM_UP] = FALSE;
-			//m_pMainFrm->m_GrabCAM[CAM_DN] = FALSE;
+			m_pMainFrm->m_GrabCAM[CAM_DN] = FALSE;
 			//  GRAB FLAG UPDATE			
 		}
 		else

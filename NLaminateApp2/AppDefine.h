@@ -14,7 +14,7 @@
 
 // 버전 정보 정의
 //#define MAIN_WINDOW_TITLE      _T(" CNA NLaminatorApp Ver 3.0(17.02.10) ")
-#define MAIN_WINDOW_TITLE      _T("NLaminatorApp Ver3.91 for ESS in Korea")
+#define MAIN_WINDOW_TITLE      _T("NLaminatorApp Ver3.91 for ESS Pilot in Korea")
 // 버전 정보 정의
 
 // 파일 로드, 저장 관련 패스의 위치 정의
@@ -57,7 +57,7 @@
 #define _UMAC                            1   // 0:UMAC통신 사용하지 않음, 1:UMAC과 연결하여 Ethernet 통신 
 #define _OMRON                           0
 #define _MELSEC                          1
-#define _DUO_SHORT                       1   // 0:SHORT TESTER는 하나만 사용함, 1:SHORT TESTER를 두 대 사용하여 모니터링 함
+#define _DUO_SHORT                       0   // 0:SHORT TESTER는 하나만 사용함, 1:SHORT TESTER를 두 대 사용하여 모니터링 함
 #define _PCI7230                         0   // 1:PCI-7230 DIO보드를 사용함
 #define _AJIN_EXT                        1   // 1:AJIN_EXT DIO보드를 사용함
 #define _GAUGE_RNR                       0   // 0:정상적인 실행 운영상태로 컴파일함, 1:반복정도 데이타 출력시 사용함
@@ -67,7 +67,7 @@
 #define _RS232C_CHROMA_TESTER2           0
 #define _NG_DISP                         1
 
-#define _OCHANG_NO3						 1   // 오창 ESS라미에 3호기만 MONO DECA가 아니라 MONO이다.
+#define _OCHANG_NO3						 0   // 오창 ESS라미에 3호기만 MONO DECA가 아니라 MONO이다.
 #define _SHORTAGE_USE				     0
 
 //#define _LAMI_PC1                        0 // shsong : 이걸 유저로 부터 셋팅값 입력받는 걸로 변경함.
@@ -83,7 +83,7 @@
 */
 
 //#define CAMERA_DCF_FILE        "C:\\APPL\\NLaminateApp\\EXE\\Falcon2-12M_8bit8TAP 4096x3072_RG"
-#define CAMERA_DCF_FILE          "S-25A30_P32RG"
+#define CAMERA_DCF_FILE          "S-25A30_P32RG" 
 //#define CAMERA_DCF_FILE2		 "HV-M2535C_RG_10TAP"
 
 #define IMAGE_WIDTH		    	     5120
@@ -112,7 +112,7 @@
 
 // 카메라의 수, 카메라 ID정의 
 #define VIEW_MAX_NUM                     2
-#define CAM_MAX_NUM						 1
+#define CAM_MAX_NUM						 2
 #define CAM_UP                           0
 #define CAM_DN                           1
 // 카메라의 수, 카메라 ID정의 

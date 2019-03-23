@@ -118,8 +118,8 @@ void CEuresisCamLib::InitBoard2()
 	// Euresis 영상획득 보드 카메라 #2 파라미터 설정
 #if _CAM25M
 	// Set the board topology to support 10 taps mode (only with a Grablink Full)
-    //McSetParamInt(MC_BOARD + 1, MC_BoardTopology, MC_BoardTopology_MONO_DECA);	
-	McSetParamInt(MC_BOARD + 1, MC_BoardTopology, MC_BoardTopology2_MONO);	
+    McSetParamInt(MC_BOARD + 1, MC_BoardTopology, MC_BoardTopology_MONO_DECA);	
+	//McSetParamInt(MC_BOARD + 1, MC_BoardTopology, MC_BoardTopology2_MONO);	
 
     // Create a channel and associate it with the first connector on the first board
     McCreate(MC_CHANNEL, &m_Channel_2);
@@ -442,7 +442,7 @@ void CEuresisCamLib::Callback1(PMCSIGNALINFO SigInfo)
 
 void CEuresisCamLib::Callback2(PMCSIGNALINFO SigInfo)
 {
-#if 0
+
 #if _EURESIS_CAM
 	LPBYTE pImage;
 	char szbuf[125];
@@ -451,62 +451,90 @@ void CEuresisCamLib::Callback2(PMCSIGNALINFO SigInfo)
 	nWidth = 0;
 	nHeight = 0;
 
-	//	if (m_pImage[1]) return;
-	switch(SigInfo->Signal)
-	{
-	case MC_SIG_SURFACE_PROCESSING:
-		// Update "current" surface address pointer
-		McGetParamInt (SigInfo->SignalInfo, MC_SurfaceAddr, (PINT32)&m_pCurrent); 
+//	if (m_pImage[1]) return;
+    switch(SigInfo->Signal)
+    {
+        case MC_SIG_SURFACE_PROCESSING:
+            // Update "current" surface address pointer
+            McGetParamInt (SigInfo->SignalInfo, MC_SurfaceAddr, (PINT32)&m_pCurrent); 
 
-		pImage = (LPBYTE)m_pCurrent;
-		if (m_pMainFrm->m_bExecRealTime)
-		{
-			if (m_pMainFrm->m_bGaugeRnR)
+			pImage = (LPBYTE)m_pCurrent;
+			if (m_pMainFrm->m_bExecRealTime)
 			{
-				// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
-				NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, IMAGE_WIDTH, IMAGE_HEIGHT, 0);
-				NAppDll_SetImagePtr(1, (long)m_pImageT);
-				// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
+				if (m_pMainFrm->m_bGaugeRnR)
+				{
+					// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
+					NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, IMAGE_WIDTH, IMAGE_HEIGHT, 0);
+					NAppDll_SetImagePtr(1, (long)m_pImageT);
+					// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
 
-				NAppDll_RealTimeMode(1, FALSE);
-				m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(1);
-				NAppDll_RealTimeMode(1, TRUE);
+					NAppDll_RealTimeMode(1, FALSE);
+	    			m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(1);
+					NAppDll_RealTimeMode(1, TRUE);
 
-				m_pMainFrm->m_bGaugeRnR = FALSE;
-				return;
-			}
+					m_pMainFrm->m_bGaugeRnR = FALSE;
+					return;
+				}
 
-			if (m_pMainFrm->m_GrabCAM[CAM_DN])
-			{
-				// 영상이 이중으로 획득시 FLAG초기화 및 LOG저장
-				m_pMainFrm->m_GrabCAM[CAM_UP] = FALSE;
-				m_pMainFrm->m_GrabCAM[CAM_DN] = FALSE;
+				if (m_pMainFrm->m_GrabCAM[CAM_DN])
+				{
+					// 영상이 이중으로 획득시 FLAG초기화 및 LOG저장
+					m_pMainFrm->m_GrabCAM[CAM_UP] = FALSE;
+					m_pMainFrm->m_GrabCAM[CAM_DN] = FALSE;
 
-				m_pMainFrm->SendResult2UMAC(1, 1, 1, 1, 0, 0.0f, 0, 0.0f);
-				sprintf_s(szbuf, "Double Grab(CAM=2)  ON INSP ... ");
-				m_pMainFrm->WriteLogToFile(szbuf);
-				return;
-				// 영상이 이중으로 획득시 FLAG초기화 및 LOG저장-
+					m_pMainFrm->SendResult2UMAC(1, 1, 0, 0, 0, 0, 0, 0);
+					sprintf_s(szbuf, "Double Grab(CAM=2)  ON INSP ... ");
+					m_pMainFrm->WriteLogToFile(szbuf);
+					return;
+					// 영상이 이중으로 획득시 FLAG초기화 및 LOG저장
+				}
+				else
+				{
+					// 영상이 획득되어 검사를 시작하는 FLAG로 USER버튼이 반응을 못하도록 함
+					m_pMainFrm->m_bCriticalF = TRUE;
+					m_pMainFrm->m_ctrlTimer.SetClockTimer(TIMER_ON_PROCESS);
+					// 영상이 획득되어 검사를 시작하는 FLAG로 USER버튼이 반응을 못하도록 함
+
+					// 정상적으로 영상 획득 FLAG "TRUE" 
+					m_pMainFrm->m_GrabCAM[CAM_DN] = TRUE;
+
+                    sprintf_s(g_LOG.m_sLogTitle2, "GRAB_CAM,%d", 2);
+					sprintf_s(szbuf, " Normal Grab(CAM=2)");
+					//m_pMainFrm->WriteLogToFile(szbuf);
+					// 정상적으로 영상 획득 FLAG "TRUE" 
+#if _CAM25M
+					// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
+					NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, IMAGE_WIDTH, IMAGE_HEIGHT, 0);
+					NAppDll_SetImagePtr(1, (long)m_pImageT);
+					// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
+#endif
+
+#if _CAM5M
+					nWidth = IMAGE_HEIGHT;
+					nHeight = IMAGE_WIDTH;
+
+					NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, nWidth, nHeight, 2);
+					NAppDll_SetImagePtr(1, (long)m_pImageT);
+#endif
+
+					// 상/하부 검사를 실행
+					m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(0);
+		   			m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(1);
+					// 상/하부 검사를 실행
+
+				    // 검사중일 때 USER버튼이 반응을 못하도록 하는 FLAG를 원래로 초기화
+				    m_pMainFrm->m_bCriticalF = FALSE;
+				    // 검사중일 때 USER버튼이 반응을 못하도록 하는 FLAG를 원래로 초기화
+
+				    m_pMainFrm->ExecMessageHandleOne();
+				}
 			}
 			else
 			{
-				// 영상이 획득되어 검사를 시작하는 FLAG로 USER버튼이 반응을 못하도록 함
-				m_pMainFrm->m_bCriticalF = TRUE;
-				m_pMainFrm->m_ctrlTimer.SetClockTimer(TIMER_ON_PROCESS);
-				// 영상이 획득되어 검사를 시작하는 FLAG로 USER버튼이 반응을 못하도록 함
-
-				// 정상적으로 영상 획득 FLAG "TRUE" 
-				m_pMainFrm->m_GrabCAM[CAM_DN] = TRUE;
-
-				sprintf_s(g_LOG.m_sLogTitle2, "GRAB_CAM,%d", 2);
-				sprintf_s(szbuf, " Normal Grab(CAM=2)");
-				m_pMainFrm->WriteLogToFile(szbuf);
-				// 정상적으로 영상 획득 FLAG "TRUE" 
+				// GRAB, LIVE영상 획득시 비전DLL에 영상을 전달하고 화면을  Invalidate함
 #if _CAM25M
-				// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
 				NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, IMAGE_WIDTH, IMAGE_HEIGHT, 0);
-				NAppDll_SetImagePtr(CAM_DN, (long)m_pImageT);
-				// 하부 카메라 영상을 위치 변환하여 그 영상을 비전DLL로 전달 "0"
+				NAppDll_SetImagePtr(1, (long)m_pImageT);
 #endif
 
 #if _CAM5M
@@ -517,51 +545,19 @@ void CEuresisCamLib::Callback2(PMCSIGNALINFO SigInfo)
 				NAppDll_SetImagePtr(1, (long)m_pImageT);
 #endif
 
-				// 상/하부 검사를 실행
-				if (CAM_MAX_NUM==2)
-				{
-					m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(0);
-					m_pMainFrm->m_pView->m_pDlgExecAuto->InspectProgressGrab(1);
-				}
-				// 상/하부 검사를 실행
-
-				// 검사중일 때 USER버튼이 반응을 못하도록 하는 FLAG를 원래로 초기화
 				m_pMainFrm->m_bCriticalF = FALSE;
-				// 검사중일 때 USER버튼이 반응을 못하도록 하는 FLAG를 원래로 초기화
-
-				//m_pMainFrm->ExecMessageHandleOne();
+		    	NAppDll_InvalidateView(1);
+				// GRAB, LIVE영상 획득시 비전DLL에 영상을 전달하고 화면을  Invalidate함
 			}
-		}
-		else
-		{
-			// GRAB, LIVE영상 획득시 비전DLL에 영상을 전달하고 화면을  Invalidate함
-#if _CAM25M
-			NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, IMAGE_WIDTH, IMAGE_HEIGHT, 0);
-			NAppDll_SetImagePtr(1, (long)m_pImageT);
+
+            break;
+        case MC_SIG_ACQUISITION_FAILURE:
+            break;
+        default:
+            break;
+    }
 #endif
 
-#if _CAM5M
-			nWidth = IMAGE_HEIGHT;
-			nHeight = IMAGE_WIDTH;
-
-			NMultiFuncDll_Trans90ConvertImage(pImage, IMAGE_WIDTH, IMAGE_HEIGHT, m_pImageT, nWidth, nHeight, 2);
-			NAppDll_SetImagePtr(1, (long)m_pImageT);
-#endif
-
-			m_pMainFrm->m_bCriticalF = FALSE;
-			NAppDll_InvalidateView(1);
-			// GRAB, LIVE영상 획득시 비전DLL에 영상을 전달하고 화면을  Invalidate함
-		}
-
-		break;
-	case MC_SIG_ACQUISITION_FAILURE:
-		break;
-	default:
-		break;
-	}
-#endif
-
-#endif // 0
 }
 
 void CEuresisCamLib::SetImagePtr(long nCam, LPBYTE pImage)
