@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{22E44546-9DEB-42B2-B22F-68347F02917B}</ProjectGuid>
+    <RootNamespace>NLaminateApp</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>NLaminateApp</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)BIN\$(SolutionName)\EXE\</OutDir>
+    <IncludePath>C:\Program Files %28x86%29\Euresys\MultiCam\Include;C:\Program Files %28x86%29\OMRON\SYSMAC Gateway\include;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Program Files %28x86%29\Euresys\MultiCam\Lib;C:\Program Files %28x86%29\OMRON\SYSMAC Gateway\lib;$(LibraryPath)</LibraryPath>
+    <EmbedManifest>false</EmbedManifest>
+    <IntDir>D:\vs_log\$(SolutionName)\$(ProjectName)</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)BIN\$(SolutionName)\EXE\</OutDir>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Program Files %28x86%29\Euresys\MultiCam\Lib;C:\Program Files %28x86%29\OMRON\SYSMAC Gateway\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Euresys\MultiCam\Include;C:\Program Files %28x86%29\OMRON\SYSMAC Gateway\include;$(IncludePath)</IncludePath>
+    <IntDir>D:\vs_log\$(SolutionName)\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>
+      </ImportLibrary>
+      <ProgramDatabaseFile>D:\vs_log\$(SolutionName)\$(ProjectName).pdb</ProgramDatabaseFile>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\..\VLib\General\.lib</ImportLibrary>
+      <ProgramDatabaseFile>D:\vs_log\$(SolutionName)\$(ProjectName).pdb</ProgramDatabaseFile>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="resource.hm" />
+    <None Include="res\Apply2.ico" />
+    <None Include="res\bitmap3.bmp" />
+    <None Include="res\BtnTitle.bmp" />
+    <None Include="res\Direction.bmp" />
+    <None Include="res\Excel.ico" />
+    <None Include="res\Exit.ico" />
+    <None Include="res\Find.ico" />
+    <None Include="res\Fit.ico" />
+    <None Include="res\GearAuto.bmp" />
+    <None Include="res\Grab.ico" />
+    <None Include="res\icon1.ico" />
+    <None Include="res\icon2.ico" />
+    <None Include="res\icon3.ico" />
+    <None Include="res\Insp.ico" />
+    <None Include="res\LargeOff.ico" />
+    <None Include="res\LargeOn.ico" />
+    <None Include="res\LargeOn2.ico" />
+    <None Include="res\LedOff.bmp" />
+    <None Include="res\LedOff.ico" />
+    <None Include="res\LedOn.bmp" />
+    <None Include="res\LedOn.ico" />
+    <None Include="res\LedOn2.bmp" />
+    <None Include="res\LedOn2.ico" />
+    <None Include="res\Live.ico" />
+    <None Include="res\Load.ico" />
+    <None Include="res\Logo.bmp" />
+    <None Include="res\Main.ico" />
+    <None Include="res\Model.ICO" />
+    <None Include="res\NextRight.ico" />
+    <None Include="res\NLaminateApp.ico" />
+    <None Include="res\NLaminateApp.rc2" />
+    <None Include="res\NLaminateAppDoc.ico" />
+    <None Include="res\Origin.ico" />
+    <None Include="res\Plot.ico" />
+    <None Include="res\PlotDisp.bmp" />
+    <None Include="res\PrivLeft.ico" />
+    <None Include="res\ProductInfo.bmp" />
+    <None Include="res\Reset.ICO" />
+    <None Include="res\Result Data.bmp" />
+    <None Include="res\ResultData.bmp" />
+    <None Include="res\ResultTitle.bmp" />
+    <None Include="res\Run.ico" />
+    <None Include="res\Save.ico" />
+    <None Include="res\Search.ico" />
+    <None Include="res\SearchTitle.bmp" />
+    <None Include="res\SearchTitle0.bmp" />
+    <None Include="res\SearchTitle1.bmp" />
+    <None Include="res\SearchTitle2.bmp" />
+    <None Include="res\Setting.ico" />
+    <None Include="res\SetupTitle.bmp" />
+    <None Include="res\SetupTitle0.bmp" />
+    <None Include="res\SetupTitle1.bmp" />
+    <None Include="res\SetupTitle2.bmp" />
+    <None Include="res\ShortageSetup.bmp" />
+    <None Include="res\ShortBar.bmp" />
+    <None Include="res\ShortSub.bmp" />
+    <None Include="res\Sky.bmp" />
+    <None Include="res\Splash.bmp" />
+    <None Include="res\Stop.ico" />
+    <None Include="res\TestShort.bmp" />
+    <None Include="res\Vision.ICO" />
+    <None Include="res\ZoomIn.ico" />
+    <None Include="res\ZoomOut.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="acteasyif.h" />
+    <ClInclude Include="AppDefine.h" />
+    <ClInclude Include="AXD.h" />
+    <ClInclude Include="AxisPlot.h" />
+    <ClInclude Include="AXL.h" />
+    <ClInclude Include="CAM\EuresisCamLib.h" />
+    <ClInclude Include="Controls\BCMenu.h" />
+    <ClInclude Include="Controls\BkDialogST.h" />
+    <ClInclude Include="Controls\BtnST.h" />
+    <ClInclude Include="Controls\Cdib.h" />
+    <ClInclude Include="Controls\ClockTimer.h" />
+    <ClInclude Include="Controls\dsspanel.h" />
+    <ClInclude Include="Controls\EditEx.h" />
+    <ClInclude Include="Controls\ImageBMP.h" />
+    <ClInclude Include="Controls\ListCtrlEx.h" />
+    <ClInclude Include="Controls\MacButtons.h" />
+    <ClInclude Include="Controls\MSCOMM.H" />
+    <ClInclude Include="Controls\sscommand.h" />
+    <ClInclude Include="Dask.h" />
+    <ClInclude Include="DlgBadImage.h" />
+    <ClInclude Include="DlgExecAuto.h" />
+    <ClInclude Include="DlgMainBar.h" />
+    <ClInclude Include="DlgModelManager.h" />
+    <ClInclude Include="DlgModelName.h" />
+    <ClInclude Include="DlgPassWord.h" />
+    <ClInclude Include="DlgPlot.h" />
+    <ClInclude Include="DlgQuery.h" />
+    <ClInclude Include="DlgResult.h" />
+    <ClInclude Include="DlgSetting.h" />
+    <ClInclude Include="DlgShortMain.h" />
+    <ClInclude Include="DlgShortSetup.h" />
+    <ClInclude Include="DlgSplash.h" />
+    <ClInclude Include="DlgSubBar.h" />
+    <ClInclude Include="DlgTestShort.h" />
+    <ClInclude Include="FlexGrid\msflexgrid.h" />
+    <ClInclude Include="FlexGrid\rowcursor.h" />
+    <ClInclude Include="ilabelx12.h" />
+    <ClInclude Include="ipiechartx_short_ng_position.h" />
+    <ClInclude Include="isevensegmen_ok_cou.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="NAppDll.h" />
+    <ClInclude Include="NGuiDll.h" />
+    <ClInclude Include="NLaminateApp.h" />
+    <ClInclude Include="NLaminateAppDoc.h" />
+    <ClInclude Include="NLaminateAppView.h" />
+    <ClInclude Include="NMultiFuncDll.h" />
+    <ClInclude Include="NPioControlDll.h" />
+    <ClInclude Include="NPlotDll.h" />
+    <ClInclude Include="NVisionDll.h" />
+    <ClInclude Include="pIO.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="acteasyif.cpp" />
+    <ClCompile Include="CAM\EuresisCamLib.cpp" />
+    <ClCompile Include="Controls\BCMenu.cpp" />
+    <ClCompile Include="Controls\BkDialogST.cpp" />
+    <ClCompile Include="Controls\BtnST.cpp" />
+    <ClCompile Include="Controls\Cdib.cpp" />
+    <ClCompile Include="Controls\ClockTimer.cpp" />
+    <ClCompile Include="Controls\dsspanel.cpp" />
+    <ClCompile Include="Controls\EditEx.cpp" />
+    <ClCompile Include="Controls\ImageBMP.cpp" />
+    <ClCompile Include="Controls\ListCtrlEx.cpp" />
+    <ClCompile Include="Controls\MacButtons.cpp" />
+    <ClCompile Include="Controls\MSCOMM.CPP" />
+    <ClCompile Include="Controls\sscommand.cpp" />
+    <ClCompile Include="DlgBadImage.cpp" />
+    <ClCompile Include="DlgExecAuto.cpp" />
+    <ClCompile Include="DlgMainBar.cpp" />
+    <ClCompile Include="DlgModelManager.cpp" />
+    <ClCompile Include="DlgModelName.cpp" />
+    <ClCompile Include="DlgPassWord.cpp" />
+    <ClCompile Include="DlgPlot.cpp" />
+    <ClCompile Include="DlgQuery.cpp" />
+    <ClCompile Include="DlgResult.cpp" />
+    <ClCompile Include="DlgSetting.cpp" />
+    <ClCompile Include="DlgShortMain.cpp" />
+    <ClCompile Include="DlgShortSetup.cpp" />
+    <ClCompile Include="DlgSplash.cpp" />
+    <ClCompile Include="DlgSubBar.cpp" />
+    <ClCompile Include="DlgTestShort.cpp" />
+    <ClCompile Include="FlexGrid\msflexgrid.cpp" />
+    <ClCompile Include="FlexGrid\rowcursor.cpp" />
+    <ClCompile Include="ilabelx12.cpp" />
+    <ClCompile Include="ipiechartx_short_ng_position.cpp" />
+    <ClCompile Include="isevensegmen_ok_cou.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="NLaminateApp.cpp" />
+    <ClCompile Include="NLaminateAppDoc.cpp" />
+    <ClCompile Include="NLaminateAppView.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NLaminateApp.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="NLaminateApp.rc" _x007B_240210C2-E3B3-11CF-BE3F-0000C0F04C96_x007D_="long" _x007B_AFEA551B-AE9C-11D3-83AE-00A024BDBF2B_x007D_="CActaj71qe71udp1" _x007B_AFEA5518-AE9C-11D3-83AE-00A024BDBF2B_x007D_="CActaj71qe71tcp" _x007B_AFEA5515-AE9C-11D3-83AE-00A024BDBF2B_x007D_="CActqj71e71udp" _x007B_5AF69F12-AE9B-11D3-83AE-00A024BDBF2B_x007D_="CActeasyif" _x007B_648A5600-2C6E-101B-82B6-000000000014_x007D_="CMscomm1" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

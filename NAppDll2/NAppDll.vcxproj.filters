@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{8f8ece02-ee72-44ea-8e65-0af297a9eda7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controls">
+      <UniqueIdentifier>{80a73601-b39f-4881-b531-feeae5516b37}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="NAppDll.def">
+      <Filter>소스 파일</Filter>
+    </None>
+    <None Include="res\NAppDll.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\nodrop.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrowB.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrowG.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Apply.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Insp.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Modify.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\LedOff.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\LedOn2.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\White.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Black.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\BW.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\WB.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\LedOn.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Delete.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Right.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\DistL2L.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Save.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Copy.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\NLaminateApp\NLaminateApp\res\Copy.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrLeft.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrRight.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrUp.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\ArrDown.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\CAL.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatternR.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\bitmap2.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatLeftTop.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\bitmap_l.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatLeftBot.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatRightTop.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatRightBot.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\PatNormal.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\TabLeftBot.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\TabLeftTop.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\TabRightBot.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\TabRightTop.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NAppDll.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Cdib.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\CPUTimer.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Ellipse.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\FunctionEtc.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\ImageBMP.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\ImageModule.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Mathematic.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\OverlayCircleGOM.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\OverlayLineGOM.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\OverlayRectGOM.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\OverlayResultGOM.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\TransformLib.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\VisionLib.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls\BCMenu.cpp">
+      <Filter>Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls\BtnST.cpp">
+      <Filter>Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgInspectSetup.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMappingSetup.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubProfile.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgVDisp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgVisionSetup.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalFunction.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleLink.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgTeachSetup.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MutualLink.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls\EditEx.cpp">
+      <Filter>Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\NMorphologyLib.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls\MacButtons.cpp">
+      <Filter>Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSliderBarCtrl.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubSLine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLightingSetup.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubPattern.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubEtc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubFolding.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSubBlob.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NAppDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Cdib.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\CPUTimer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Ellipse.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\FunctionEtc.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\ImageBMP.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\ImageModule.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Mathematic.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\OverlayCircleGOM.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\OverlayLineGOM.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\OverlayRectGOM.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\OverlayResultGOM.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\TransformLib.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\VisionLib.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls\MemDC.h">
+      <Filter>Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls\BCMenu.h">
+      <Filter>Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls\BtnST.h">
+      <Filter>Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleLink.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AxisPlot.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgInspectSetup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMappingSetup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubProfile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgVDisp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgVisionSetup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalFunction.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelData.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NLicenseKeyDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NVisionDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MutualLink.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NPioControlDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSliderBarCtrl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls\EditEx.h">
+      <Filter>Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="NBlobDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\NMorphologyLib.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls\MacButtons.h">
+      <Filter>Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgTeachSetup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubSLine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLightingSetup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubPattern.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NPatternDll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubEtc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubFolding.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSubBlob.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NAppDll.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="NLicenseKeyDll.lib" />
+    <Library Include="NPioControlDll.lib" />
+    <Library Include="NBlobDll.lib" />
+    <Library Include="NPatternDll.lib" />
+  </ItemGroup>
+</Project>

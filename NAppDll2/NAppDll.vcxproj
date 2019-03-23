@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{52682E6F-36C7-47F3-BBA9-F0D3FE930839}</ProjectGuid>
+    <RootNamespace>NAppDll</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+    <ProjectName>NAppDll</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)BIN\$(SolutionName)\EXE\</OutDir>
+    <IntDir>D:\vs_log\$(SolutionName)\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)BIN\$(SolutionName)\EXE\</OutDir>
+    <IntDir>D:\vs_log\$(SolutionName)\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OpenMPSupport>true</OpenMPSupport>
+      <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\NAppDll.def</ModuleDefinitionFile>
+      <ImportLibrary>..\..\VLib\General\$(ProjectName).lib</ImportLibrary>
+      <ProgramDatabaseFile>D:\vs_log\$(SolutionName)\$(ProjectName).pdb</ProgramDatabaseFile>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OpenMPSupport>true</OpenMPSupport>
+      <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\NAppDll.def</ModuleDefinitionFile>
+      <ImportLibrary>..\..\VLib\General\$(ProjectName).lib</ImportLibrary>
+      <ProgramDatabaseFile>D:\vs_log\$(SolutionName)\$(ProjectName).pdb</ProgramDatabaseFile>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\NLaminateApp\NLaminateApp\res\Copy.ico" />
+    <None Include="NAppDll.def" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\Apply.ico" />
+    <None Include="res\ArrDown.ico" />
+    <None Include="res\ArrLeft.ico" />
+    <None Include="res\ArrowB.ico" />
+    <None Include="res\ArrowG.ico" />
+    <None Include="res\ArrRight.ico" />
+    <None Include="res\ArrUp.ico" />
+    <None Include="res\bitmap2.bmp" />
+    <None Include="res\bitmap_l.bmp" />
+    <None Include="res\Black.bmp" />
+    <None Include="res\BW.bmp" />
+    <None Include="res\CAL.bmp" />
+    <None Include="res\Copy.ico" />
+    <None Include="res\Delete.ico" />
+    <None Include="res\DistL2L.ico" />
+    <None Include="res\icon1.ico" />
+    <None Include="res\Insp.ico" />
+    <None Include="res\LedOff.ico" />
+    <None Include="res\LedOn.ico" />
+    <None Include="res\LedOn2.ico" />
+    <None Include="res\Modify.ico" />
+    <None Include="res\NAppDll.rc2" />
+    <None Include="res\nodrop.cur" />
+    <None Include="res\PatLeftBot.bmp" />
+    <None Include="res\PatLeftTop.bmp" />
+    <None Include="res\PatNormal.bmp" />
+    <None Include="res\PatRightBot.bmp" />
+    <None Include="res\PatRightTop.bmp" />
+    <None Include="res\PatternR.ico" />
+    <None Include="res\Right.ico" />
+    <None Include="res\Save.ico" />
+    <None Include="res\TabLeftBot.bmp" />
+    <None Include="res\TabLeftTop.bmp" />
+    <None Include="res\TabRightBot.bmp" />
+    <None Include="res\TabRightTop.bmp" />
+    <None Include="res\WB.bmp" />
+    <None Include="res\White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Controls\BCMenu.cpp" />
+    <ClCompile Include="Controls\BtnST.cpp" />
+    <ClCompile Include="Controls\EditEx.cpp" />
+    <ClCompile Include="Controls\MacButtons.cpp" />
+    <ClCompile Include="DlgInspectSetup.cpp" />
+    <ClCompile Include="DlgLightingSetup.cpp" />
+    <ClCompile Include="DlgMappingSetup.cpp" />
+    <ClCompile Include="DlgSliderBarCtrl.cpp" />
+    <ClCompile Include="DlgSubBlob.cpp" />
+    <ClCompile Include="DlgSubEtc.cpp" />
+    <ClCompile Include="DlgSubFolding.cpp" />
+    <ClCompile Include="DlgSubPattern.cpp" />
+    <ClCompile Include="DlgSubProfile.cpp" />
+    <ClCompile Include="DlgSubSLine.cpp" />
+    <ClCompile Include="DlgTeachSetup.cpp" />
+    <ClCompile Include="DlgVDisp.cpp" />
+    <ClCompile Include="DlgVisionSetup.cpp" />
+    <ClCompile Include="GlobalData.cpp" />
+    <ClCompile Include="GlobalFunction.cpp" />
+    <ClCompile Include="ModelData.cpp" />
+    <ClCompile Include="ModuleLink.cpp" />
+    <ClCompile Include="Modules\Cdib.cpp" />
+    <ClCompile Include="Modules\CPUTimer.cpp" />
+    <ClCompile Include="Modules\Ellipse.cpp" />
+    <ClCompile Include="Modules\FunctionEtc.cpp" />
+    <ClCompile Include="Modules\ImageBMP.cpp" />
+    <ClCompile Include="Modules\ImageModule.cpp" />
+    <ClCompile Include="Modules\Mathematic.cpp" />
+    <ClCompile Include="Modules\NMorphologyLib.cpp" />
+    <ClCompile Include="Modules\OverlayCircleGOM.cpp" />
+    <ClCompile Include="Modules\OverlayLineGOM.cpp" />
+    <ClCompile Include="Modules\OverlayRectGOM.cpp" />
+    <ClCompile Include="Modules\OverlayResultGOM.cpp" />
+    <ClCompile Include="Modules\TransformLib.cpp" />
+    <ClCompile Include="Modules\VisionLib.cpp" />
+    <ClCompile Include="MutualLink.cpp" />
+    <ClCompile Include="NAppDll.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AxisPlot.h" />
+    <ClInclude Include="Controls\BCMenu.h" />
+    <ClInclude Include="Controls\BtnST.h" />
+    <ClInclude Include="Controls\EditEx.h" />
+    <ClInclude Include="Controls\MacButtons.h" />
+    <ClInclude Include="Controls\MemDC.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="DlgInspectSetup.h" />
+    <ClInclude Include="DlgLightingSetup.h" />
+    <ClInclude Include="DlgMappingSetup.h" />
+    <ClInclude Include="DlgSliderBarCtrl.h" />
+    <ClInclude Include="DlgSubBlob.h" />
+    <ClInclude Include="DlgSubEtc.h" />
+    <ClInclude Include="DlgSubFolding.h" />
+    <ClInclude Include="DlgSubPattern.h" />
+    <ClInclude Include="DlgSubProfile.h" />
+    <ClInclude Include="DlgSubSLine.h" />
+    <ClInclude Include="DlgTeachSetup.h" />
+    <ClInclude Include="DlgVDisp.h" />
+    <ClInclude Include="DlgVisionSetup.h" />
+    <ClInclude Include="GlobalData.h" />
+    <ClInclude Include="GlobalFunction.h" />
+    <ClInclude Include="ModelData.h" />
+    <ClInclude Include="ModuleLink.h" />
+    <ClInclude Include="Modules\Cdib.h" />
+    <ClInclude Include="Modules\CPUTimer.h" />
+    <ClInclude Include="Modules\Ellipse.h" />
+    <ClInclude Include="Modules\FunctionEtc.h" />
+    <ClInclude Include="Modules\ImageBMP.h" />
+    <ClInclude Include="Modules\ImageModule.h" />
+    <ClInclude Include="Modules\Mathematic.h" />
+    <ClInclude Include="Modules\NMorphologyLib.h" />
+    <ClInclude Include="Modules\OverlayCircleGOM.h" />
+    <ClInclude Include="Modules\OverlayLineGOM.h" />
+    <ClInclude Include="Modules\OverlayRectGOM.h" />
+    <ClInclude Include="Modules\OverlayResultGOM.h" />
+    <ClInclude Include="Modules\TransformLib.h" />
+    <ClInclude Include="Modules\VisionLib.h" />
+    <ClInclude Include="MutualLink.h" />
+    <ClInclude Include="NAppDll.h" />
+    <ClInclude Include="NBlobDll.h" />
+    <ClInclude Include="NLicenseKeyDll.h" />
+    <ClInclude Include="NPatternDll.h" />
+    <ClInclude Include="NPioControlDll.h" />
+    <ClInclude Include="NVisionDll.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NAppDll.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="NBlobDll.lib" />
+    <Library Include="NLicenseKeyDll.lib" />
+    <Library Include="NPatternDll.lib" />
+    <Library Include="NPioControlDll.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="NAppDll.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
